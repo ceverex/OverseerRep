@@ -1,0 +1,26 @@
+{
+  "name": "overseerrep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceverex/OverseerRep.git"
+  },
+  "keywords": [],
+  "author": "ceverex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ceverex/OverseerRep/issues"
+  },
+  "homepage": "https://github.com/ceverex/OverseerRep#readme",
+  "dependencies": {
+    "@discordjs/rest": "^2.4.3",
+    "discord-api-types": "^0.37.119",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
