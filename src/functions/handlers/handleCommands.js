@@ -9,8 +9,8 @@ module.exports = (client) => {
         .filter((file) => file.endsWith(".js"));
         
         for (file in commandFiles) {
-            
-            }
+          
+        }
     }
   };
 };
