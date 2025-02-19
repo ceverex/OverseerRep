@@ -1,5 +1,4 @@
 const { MessageFlags } = require("discord.js");
-const { message } = require("noblox.js");
 
 module.exports = {
     data: {
