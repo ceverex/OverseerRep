@@ -14,9 +14,10 @@ module.exports = {
   
         const channelId = "1265921387198021693"; // deployment status channel
         const channel = await client.channels.fetch(channelId);
-        channel
-        .setName("Deployment: Active");
+
         console.log(`Found channel: ${channel}`);
+        await channel.setName("Deployment: Active");
+        
       } else {
         await interaction.reply({
           content: `You do not have administrator permissions.`,

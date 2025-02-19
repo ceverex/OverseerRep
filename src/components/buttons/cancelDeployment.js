@@ -9,14 +9,15 @@ module.exports = {
     if (interaction.member.permissions.has("ADMINISTRATOR")) {
       await interaction.reply({
         content: `Deployment stopped.`,
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
 
       const channelId = "1265921387198021693"; // deployment status channel
       const channel = await client.channels.fetch(channelId);
 
       console.log(`Found channel: ${channel}`);
-      channel.setName("Deployment: Inactive");
+      await channel.setName("Deployment: Inactive");
+      
     } else {
       await interaction.reply({
         content: `You do not have administrator permissions.`,
