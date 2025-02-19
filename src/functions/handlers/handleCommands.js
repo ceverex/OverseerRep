@@ -1,4 +1,4 @@
-const { REST } = require("@discordjs/rest");
+const { REST } = require('@discordjs/rest')
 const { Routes } = require("discord-api-types/v9");
 const fs = require("fs");
 
@@ -11,10 +11,10 @@ module.exports = (client) => {
         .filter((file) => file.endsWith(".js"));
 
       const { commands, commandArray } = client;
-      for (const file in commandFiles) {
+      for (const file of commandFiles) {
         const command = require(`../../commands/${folder}/${file}`);
         commands.set(command.data.name, command);
-        commandArray.push(command, command.data.toJSON());
+        commandArray.push(command.data.toJSON());
       }
     }
 
@@ -24,8 +24,8 @@ module.exports = (client) => {
     try {
       console.log(`Started refreshing application (/) commands.`);
 
-      await rest.put(Routes.applicationCommands(clientId), {
-        // applicationGuildCommands ... clientId, guildId
+      // or do applicationCommands(clientId) without guildId
+      await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
         body: client.commandArray,
       });
 
