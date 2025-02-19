@@ -3,6 +3,7 @@ const {
     EmbedBuilder,
     PermissionFlagsBits,
     PermissionsBitField,
+    MessageFlags
   } = require("discord.js");
   
   module.exports = {

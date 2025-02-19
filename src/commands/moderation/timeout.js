@@ -2,7 +2,8 @@ const {
     SlashCommandBuilder,
     EmbedBuilder,
     PermissionFlagsBits,
-    PermissionsBitField
+    PermissionsBitField,
+    MessageFlags
   } = require("discord.js");
   
   module.exports = {
