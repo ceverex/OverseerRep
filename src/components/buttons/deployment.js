@@ -14,12 +14,8 @@ module.exports = {
   
         const channelId = "1265921387198021693"; // deployment status channel
         const channel = await client.channels.fetch(channelId);
-        await channel
-        .setName("Deployment: Active")
-        .then((newChannel) =>
-          console.log(`Channel's new name is ${newChannel.name}`)
-        )
-        .catch(console.error);
+        channel
+        .setName("Deployment: Active");
         console.log(`Found channel: ${channel}`);
       } else {
         await interaction.reply({

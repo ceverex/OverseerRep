@@ -16,12 +16,7 @@ module.exports = {
       const channel = await client.channels.fetch(channelId);
 
       console.log(`Found channel: ${channel}`);
-      await channel
-        .setName("Deployment: Inactive")
-        .then((newChannel) =>
-          console.log(`Channel's new name is ${newChannel.name}`)
-        )
-        .catch(console.error);
+      channel.setName("Deployment: Inactive");
     } else {
       await interaction.reply({
         content: `You do not have administrator permissions.`,
