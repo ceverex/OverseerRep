@@ -7,7 +7,8 @@ module.exports = {
   async execute(interaction, client) {
     // Check if the user has administrator permissions
     if (interaction.member.permissions.has("ADMINISTRATOR")) {
-      await interaction.reply({
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+      await interaction.editReply({
         content: `Deployment stopped.`,
         flags: MessageFlags.Ephemeral,
       });
@@ -19,7 +20,7 @@ module.exports = {
       await channel.setName("Deployment: Inactive");
       
     } else {
-      await interaction.reply({
+      await interaction.editReply({
         content: `You do not have administrator permissions.`,
         flags: MessageFlags.Ephemeral,
       });
