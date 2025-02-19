@@ -9,7 +9,7 @@ module.exports = {
       if (interaction.member.permissions.has("ADMINISTRATOR")) {
         await interaction.reply({
           content: `Deployment started.`,
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
   
         const channelId = "1265921387198021693"; // deployment status channel
