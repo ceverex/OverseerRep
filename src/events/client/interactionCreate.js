@@ -1,4 +1,4 @@
-const { InteractionType, EmbedBuilder } = require("discord.js");
+const { InteractionType, EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
   name: "interactionCreate",
@@ -27,7 +27,7 @@ module.exports = {
 
         await interaction.reply({
           embeds: [errorEmbed],
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     } else if (interaction.isButton()) {
