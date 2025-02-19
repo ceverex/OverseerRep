@@ -16,7 +16,7 @@ module.exports = {
       const channel = await client.channels.fetch(channelId);
 
       console.log(`Found channel: ${channel}`);
-      channel
+      await channel
         .setName("Deployment: Inactive")
         .then((newChannel) =>
           console.log(`Channel's new name is ${newChannel.name}`)
