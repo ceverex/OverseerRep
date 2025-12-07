@@ -20,7 +20,7 @@ module.exports = {
     let embed_title = interaction.options.getString("embed_title");
     let message = interaction.options.getString("message");
     const embed = new EmbedBuilder()
-      .setColor(0x1D6DA8) // 0x9522CE - ceverex
+      .setColor(process.env.embedColor) // 0x9522CE - ceverex, 0x1D6DA8
       .addFields([
         {
           name: `${embed_title}`,
