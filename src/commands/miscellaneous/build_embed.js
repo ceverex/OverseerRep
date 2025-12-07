@@ -14,7 +14,8 @@ module.exports = {
     )
     .addStringOption((option) =>
       option.setName("embed_option").setDescription("string").setRequired(false)
-    ),
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client) {
     let embed_option = interaction.options.getString("embed_option")
     let channel_id = interaction.options.getString("channel_id");
@@ -26,57 +27,83 @@ module.exports = {
         content: "Error: Channel not found.",
       });
     }
-    const universal_uniform_embed = new EmbedBuilder()
-      .setTitle("Universal Uniform")
-      .setDescription(
-        "Links to the required uniform materials are as follows:"
-      )
-      .setColor(0x1d6da8)
-      .addFields([
-        {
-          name: `Vest:`,
-          value: `https://www.roblox.com/catalog/71900146160395/Vest`
-        },
-      ])
-      .setImage('https://cdn.discordapp.com/attachments/1254552663446650930/1341626501380182016/information.png?ex=67b6ae8c&is=67b55d0c&hm=ec792b7cd2dc17d114d60e542e20b13c554c11f0aab6e0ef80799a04d0268472&');
-
-    await interaction.reply({
-      content: "Embed Sent",
-    });
-
-    const uniform_info_embed = new EmbedBuilder()
-      .setTitle('Uniform Information')
-      .setDescription('While members represent our group, we expect them to follow a few uniform rules to ensure the best possible outwards image of our group.')
-      .setColor(0x1d6da8)
+  
+    if (embed_option == "rules") {
+      const rules_embed = new EmbedBuilder()
+      .setTitle('Rules')
+      //.setDescription('While members represent our group, we expect them to follow a few uniform rules to ensure the best possible outwards image of our group.')
+      .setColor(process.env.embedColor)
       .addFields([
         {
           name: `1.`,
-          value: `Wear the uniform as listed`
+          value: `No racism, homophobia, sexism, or discrimination of any kind`
         },
         {
           name: `2.`,
-          value: `Use official group items only`
+          value: `No NSFW content in any channel`
         },
         {
           name: `3.`,
-          value: `Use proper skin tone colors (guide given in [#uniform-universal](https://discord.com/channels/1226091568612769872/1227733267789250570))`
+          value: `No short links or IP grabbers`
         },
         {
           name: `4.`,
-          value: `No unrealistic accessories`
+          value: `Do not excessively mention other members`
         },
         {
           name: `5.`,
-          value: `T-Shirts are not allowed`
+          value: `No excessive vulgar language`
+        },
+        {
+          name: `6.`,
+          value: `Abide by Discord's Terms of Service and Community Guidelines`
         },
         {
           name: `Notice:`,
-          value: `Breaking any of these rules will result in a WARNING being issued. Continued misconduct regarding the rules will result in a KICK from the group.`
+          value: `Breaking any of these rules will result in an immediate KICK and BLACKLIST from the group.`
         },
       ]);
 
     await channel.send({
-      embeds: [uniform_info_embed],
+      embeds: [rules_embed],
+    });
+    } else if (embed_option == "welcome") {
+      const welcome_embed = new EmbedBuilder()
+      .setTitle('Welcome to the Biosphere Sovereignty Corps!')
+      .setDescription('You are currently under active observation until further notice. Your rank will be assigned shortly.')
+      .setColor(process.env.embedColor)
+
+      await channel.send({
+      embeds: [welcome_embed],
+    });
+    } else if (embed_option == "loadout") {
+      const loadout_embed = new EmbedBuilder()
+      .setColor(process.env.embedColor)
+      .addFields([
+        {
+          name: `BDU W/O Gloves:`,
+          value: `https://www.roblox.com/catalog/85658084539930/Uniform`
+        },
+        {
+          name: `BDU W/ Gloves:`,
+          value: `https://www.roblox.com/catalog/83698216274347/Uniform`
+        },
+        {
+          name: `Universal Bottoms:`,
+          value: `https://www.roblox.com/catalog/127620274145103/Universal`
+        },
+      ]);
+
+      await channel.send({
+      embeds: [loadout_embed],
+    });
+    } else {
+      return interaction.reply({
+        content: "Error: Invalid embed option.",
+      });
+    }
+    await interaction.reply({
+      content: "Embed Sent",
     });
 
     setTimeout(() => interaction.deleteReply(), 5000);
