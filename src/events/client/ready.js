@@ -8,7 +8,7 @@ module.exports = {
         client.user.setPresence({
             activities: [
               {
-                name: `Over CORU`,
+                name: `YouTube`,
                 type: ActivityType.Watching,
               },
             ],
